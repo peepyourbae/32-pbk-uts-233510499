@@ -20,6 +20,11 @@ const deleteItem = (id) => {
   items.value = items.value.filter(item => item.id !== id)
 }
 
+const toggle = (item) => {
+  item.completed = !item.completed
+  console.log(item.completed)
+}
+
 </script>
 
 <template>
@@ -31,6 +36,7 @@ const deleteItem = (id) => {
   <div>
     <ul>
       <li v-for="item in items" :key="item.id">
+        <input type="checkbox" @change="toggle(item)" :checked="item.completed"/>
         {{ item.text }}
         <button @click="deleteItem(item.id)">Hapus</button>
       </li>
