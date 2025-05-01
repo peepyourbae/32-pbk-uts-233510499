@@ -15,6 +15,11 @@ const addItem = () => {
     newItem.value = ''
   }
 }
+
+const deleteItem = (id) => {
+  items.value = items.value.filter(item => item.id !== id)
+}
+
 </script>
 
 <template>
@@ -27,11 +32,10 @@ const addItem = () => {
     <ul>
       <li v-for="item in items" :key="item.id">
         {{ item.text }}
+        <button @click="deleteItem(item.id)">Hapus</button>
       </li>
     </ul>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
